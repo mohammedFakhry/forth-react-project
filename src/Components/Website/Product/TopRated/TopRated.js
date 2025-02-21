@@ -1,0 +1,63 @@
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons'
+import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
+import { NavLink } from 'react-router-dom'
+
+const TopRated = (props) => {
+    const roundStar = Math.round( props.rating, 5 );
+    const stars = Math.min( roundStar, 5 );
+
+    const showGoldStars = Array.from({length: stars}).map( (_, idx)=> (
+        <FontAwesomeIcon style={{ color: 'gold' }} icon={solidStar} key={idx} />
+    ) )
+
+    const showEmptyStars = Array.from({length: 5-stars}).map( (_, idx)=> (
+        <FontAwesomeIcon icon={regularStar} key={idx} />
+    ) )
+
+
+    return (
+        <NavLink to={`/product/${props.id}`} className='col-md-6 col-12 border w-100 d-flex align-items-center justify-content-center flex-wrap mb-2'>
+            <div
+                alt=''
+                className='col-md-4 col-12'
+                style={{
+                    backgroundImage: `url('${props.img}')`,
+                    backgroundPosition: 'center center',
+                    backgroundSize: 'cover',
+                    height: '150px',
+                }}  
+            ></div>
+            <div className='m-1 col-md-7 col-12 rounded p-3 h-100 d-flex flex-column justify-content-between'>
+                <div>
+                    <p className='text-truncate' style={{ color: 'gray' }}>{props.title}</p>
+                    <p className='text-black text-truncate'>{props.description}</p>
+
+                    <div className='px-5 py-4 position-relative'>
+                        { props.sale && <p style={{ width: '50px', height: '50px', lineHeight: '50px' }} className='m-0 position-absolute top-0 start-0 bg-primary rounded-circle text-white text-uppercase d-inline-block text-center'>Sale</p>}
+                        <img src={require('../../../../Assets/images/3126552.png')} alt='' className='img-fluid' />
+                        {/* <img src={props.img} alt='' className='img-fluid' /> */}
+                    </div>
+                </div>
+
+                <div className='d-flex align-items-center justify-content-between pt-4'>
+                    <div>
+                        {showGoldStars}
+                        {showEmptyStars}
+
+                        <div className='d-flex align-items-center gap-3'>
+                            <h5 className='text-primary m-0'>{props.discount}$</h5>
+                            <h6 style={{ color: 'gray', textDecoration: 'line-through' }} className='m-0'>{props.price}$</h6>
+                        </div>
+                    </div>
+                    <div className='border p-2 rounded'>
+                        <img src={require('./../../../../Assets/images/3126552.png')} alt='cart' width='20px' />
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+    )
+}
+
+export default TopRated

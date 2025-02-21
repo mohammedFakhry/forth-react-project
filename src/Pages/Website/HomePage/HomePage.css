@@ -1,0 +1,20 @@
+.head{
+    height: 100vh;
+    background-image: url('../../../Assets/images/owr\ new\ menu.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.head h5{
+    color: gray;
+}
+
+.custoum-search{
+    color: rgba(0, 0, 0, .5) !important;
+}
+
+.custoum-search:focus{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1) !important;
+    border: rgba(0, 0, 0, .1) !important;
+    outline: rgba(0, 0, 0, .1) !important;
+}

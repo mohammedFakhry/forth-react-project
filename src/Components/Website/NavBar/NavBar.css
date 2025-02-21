@@ -1,0 +1,18 @@
+.category-title{
+    transition: .2s;
+    
+}
+
+.category-title:hover{
+    color: rgb(85, 85, 245) !important;
+}
+
+.custom-search{
+    color: rgb(0, 0, 0, .5) !important;
+}
+
+.custom-search:focus{
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, .1) !important;
+    border: rgb(0, 0, 0, .1) !important;
+    outline: rgb(0, 0, 0, .1) !important;
+}
